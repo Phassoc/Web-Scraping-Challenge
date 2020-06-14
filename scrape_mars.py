@@ -1,4 +1,4 @@
-# Dependencies and Setup
+# Dependencies  
 from bs4 import BeautifulSoup as bs
 from splinter import Browser
 import pandas as pd
@@ -6,12 +6,10 @@ import requests
 import time
 import re
 
-# MAC - Set browser
+# Browser setup function...
 def get_browser():
 	
-	#executable_path = {"executable_path": "C:/users/phass/chromedriver"}
-	#executable_path = {"executable_path": "chromedriver.exe"}
-	return Browser("chrome", executable_path="chromedriver", headless=True)
+		return Browser("chrome", executable_path="chromedriver", headless=True)
 	
 mars_info = {}
 	
@@ -38,7 +36,7 @@ def scrape_info():
 	mars_info["news_paragraph"] = news_paragraph 
 
 
-	# JPL Mars Space Images - Featured Image
+# Featured Image
 	
 	# Visit JPL Featured Space Image url
 	browser = get_browser()
@@ -70,7 +68,7 @@ def scrape_info():
 	mars_info["featured_image_url"] = featured_image_url
 	
 	
-	# Mars Weather
+# Mars Weather
 	
 	# Run init_browser/driver.
 	browser = get_browser()
@@ -95,7 +93,7 @@ def scrape_info():
 	mars_info["mars_weather"] = mars_weather
 	
 
-	# Mars Facts
+# Mars Facts
 
 	# Visit the Mars Facts webpage and use Pandas to scrape the table
 	url_facts = "https://space-facts.com/mars/"
@@ -124,7 +122,7 @@ def scrape_info():
 	mars_info["mars_facts"] = html_table
 
 
-	# Mars Hemispheres xxx
+# Mars Hemispheres - 4
 	
 	# Visit the USGS Astrogeology Science Center url
 	browser = get_browser()
@@ -168,7 +166,7 @@ def scrape_info():
 
 		mars_info["hemispheres_info"] = hemispheres_info
 
-	# Close the browser after scraping
+# Close the browser after scraping
 	browser.quit()
 	
 	return mars_info
